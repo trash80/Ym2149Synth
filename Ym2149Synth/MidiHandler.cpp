@@ -137,22 +137,30 @@ void MidiHandlerClass::update()
             switch (data) {
                 case 0xF8:
                     // Transport Sync Message
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendRealTime(data);
+                    #endif
                     callback->onTransportClock();
                     break;
                 case 0xFA:
                     // Transport Start Message
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendRealTime(data);
+                    #endif
                     callback->onTransportStart();
                     break;
                 case 0xFB:
                     // Transport Continue Message
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendRealTime(data);
+                    #endif
                     callback->onTransportContinue();
                     break;
                 case 0xFC:
                     // Case: Transport Stop Message
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendRealTime(data);
+                    #endif
                     callback->onTransportStop();
                     break;
                 case 0xFD:
@@ -172,11 +180,15 @@ void MidiHandlerClass::update()
             callback->onData1();
 
             if((command & 0xF0) == 0xC0) {
+                #ifdef MIDI_INTERFACE
                 if(relayMidi) usbMIDI.sendProgramChange(data1, channel);
+                #endif
                 callback->onProgramChange();
                 data1 = -1;
             } else if((command & 0xF0) == 0xD0) {
+                #ifdef MIDI_INTERFACE
                 if(relayMidi) usbMIDI.sendAfterTouch(data1, channel);
+                #endif
                 callback->onAfterTouch();
                 data1 = -1;
             }
@@ -186,29 +198,39 @@ void MidiHandlerClass::update()
                 case 0x90:
                     // Note On
                     if(data2 != 0) {
+                        #ifdef MIDI_INTERFACE
                         if(relayMidi) usbMIDI.sendNoteOn(data1, data2, channel);
+                        #endif
                         callback->onNoteOn();
                         break;
                     }
                     // Fall though to Note Off
                 case 0x80:
                     // Note Off
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendNoteOff(data1, data2, channel);
+                    #endif
                     callback->onNoteOff();
                     break;
                 case 0xA0:
                     // After Touch
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendPolyPressure(data1, data2, channel);
+                    #endif
                     callback->onPolyPressure();
                     break;
                 case 0xB0:
                     // Control Change
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendControlChange(data1, data2, channel);
+                    #endif
                     callback->onControlChange();
                     break;
                 case 0xE0:
                     // Pitch Wheel
+                    #ifdef MIDI_INTERFACE
                     if(relayMidi) usbMIDI.sendPitchBend(((unsigned short)data2<<7) | (unsigned short)data1, channel);
+                    #endif
                     callback->onPitchBend();
                     break;
             }
