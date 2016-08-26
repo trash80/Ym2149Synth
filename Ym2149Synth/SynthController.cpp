@@ -77,10 +77,22 @@ void SynthControllerClass::onNoteOn()
 {
     uint8_t * m = &channels[2];
     uint8_t synth = 3;
+    uint8_t note = midi->getData1();
 
     while(synth--) {
         if(*m == midi->getChannel()) {
-            Synth[synth].playNote(midi->getData1(),midi->getData2());
+
+            if(note < 16) {
+                keyTrig[synth] = note;
+                Patch[synth].load(&Synth[synth],note);
+                Synth[synth].playNote(36,midi->getData2());
+            } else {
+                if(keyTrig[synth] > 0) {
+                    Patch[synth].load(&Synth[synth],-1);
+                }
+                keyTrig[synth] = -1;
+                Synth[synth].playNote(note,midi->getData2());
+            }
         }
         m--;
     }
@@ -90,9 +102,15 @@ void SynthControllerClass::onNoteOff()
 {
     uint8_t * m = &channels[2];
     uint8_t synth = 3;
+    uint8_t note = midi->getData1();
+
     while(synth--) {
         if(*m == midi->getChannel()) {
-            Synth[synth].playNote(midi->getData1(),0);
+            if(note < 16) {
+                Synth[synth].playNote(36,0);
+            } else {
+                Synth[synth].playNote(midi->getData1(),0);
+            }
         }
         m--;
     }
@@ -122,7 +140,7 @@ void SynthControllerClass::onControlChange()
                 Synth[synth].setSynthType(midi->getData2());
                 break;
             case 4:
-                Synth[synth].volumeEnvelope.setShape(midi->getData2());
+                Synth[synth].setVolumeEnvShape(midi->getData2());
                 break;
             case 5:
                 Synth[synth].setGlide(midi->getData2());
@@ -137,10 +155,10 @@ void SynthControllerClass::onControlChange()
                 Synth[synth].setNoiseDelay(midi->getData2());
                 break;
             case 9:
-                Synth[synth].setPitchEnvelopeAmount(midi->getData2());
+                Synth[synth].setPitchEnvAmount(midi->getData2());
                 break;
             case 10:
-                Synth[synth].pitchEnvelope.setShape(midi->getData2());
+                Synth[synth].setPitchEnvShape(midi->getData2());
                 break;
             case 11:
                 Synth[synth].setTranspose(midi->getData2());

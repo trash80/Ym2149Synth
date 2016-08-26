@@ -62,6 +62,7 @@ class SynthControllerClass : public MidiCallbackClass {
 
   private:
       MidiHandlerClass * midi;
+      int8_t keyTrig[3];
 };
 
 typedef SynthControllerClass SynthController;
