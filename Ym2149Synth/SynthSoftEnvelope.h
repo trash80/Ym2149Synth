@@ -1,16 +1,16 @@
 /*
- * YmSynth
+ * Ym2149Synth
  * http://trash80.com
  * Copyright (c) 2016 Timothy Lamb
  *
- * This file is part of YmSynth.
+ * This file is part of Ym2149Synth.
  *
- * YmSynth is free software: you can redistribute it and/or modify
+ * Ym2149Synth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * YmSynth is distributed in the hope that it will be useful,
+ * Ym2149Synth is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -20,12 +20,12 @@
  *
  */
 
-#ifndef YMSOFTENVELOPE_h
-#define YMSOFTENVELOPE_h
+#ifndef SYMTHSOFTENVELOPE_h
+#define SYNTHSOFTENVELOPE_h
 
 #include "Arduino.h"
 
-class YMSoftEnvelopeClass {
+class SynthSoftEnvelopeClass {
   public:
 
     void begin();
@@ -48,6 +48,6 @@ class YMSoftEnvelopeClass {
     int value;
 };
 
-typedef YMSoftEnvelopeClass YMSoftEnvelope;
+typedef SynthSoftEnvelopeClass SynthSoftEnvelope;
 
 #endif

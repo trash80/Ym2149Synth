@@ -1,16 +1,16 @@
 /*
- * YmSynth
+ * Ym2149Synth
  * http://trash80.com
  * Copyright (c) 2016 Timothy Lamb
  *
- * This file is part of YmSynth.
+ * This file is part of Ym2149Synth.
  *
- * YmSynth is free software: you can redistribute it and/or modify
+ * Ym2149Synth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * YmSynth is distributed in the hope that it will be useful,
+ * Ym2149Synth is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -20,9 +20,9 @@
  *
  */
 
-#include "YMSynthController.h"
+#include "SynthController.h"
 
-void YMSynthControllerClass::begin()
+void SynthControllerClass::begin()
 {
     Ym.begin();
 
@@ -45,32 +45,32 @@ void YMSynthControllerClass::begin()
     }
 }
 
-void YMSynthControllerClass::update()
+void SynthControllerClass::update()
 {
 
 }
 
-void YMSynthControllerClass::updateSoftSynths()
+void SynthControllerClass::updateSoftSynths()
 {
     Synth[0].updateSoftsynth();
     Synth[1].updateSoftsynth();
     Synth[2].updateSoftsynth();
 }
 
-void YMSynthControllerClass::updateEvents()
+void SynthControllerClass::updateEvents()
 {
     Synth[0].updateEvents();
     Synth[1].updateEvents();
     Synth[2].updateEvents();
 }
 
-void YMSynthControllerClass::setChannels(uint8_t c1, int8_t c2, int8_t c3){
+void SynthControllerClass::setChannels(uint8_t c1, int8_t c2, int8_t c3){
     channels[0] = c1;
     channels[1] = c2;
     channels[2] = c3;
 }
 
-void YMSynthControllerClass::onNoteOn()
+void SynthControllerClass::onNoteOn()
 {
     uint8_t * m = &channels[2];
     uint8_t synth = 3;
@@ -83,7 +83,7 @@ void YMSynthControllerClass::onNoteOn()
     }
 }
 
-void YMSynthControllerClass::onNoteOff()
+void SynthControllerClass::onNoteOff()
 {
     uint8_t * m = &channels[2];
     uint8_t synth = 3;
@@ -95,7 +95,7 @@ void YMSynthControllerClass::onNoteOff()
     }
 }
 
-void YMSynthControllerClass::onControlChange()
+void SynthControllerClass::onControlChange()
 {
     uint8_t * m = &channels[2];
     uint8_t synth = 3;
@@ -149,17 +149,17 @@ void YMSynthControllerClass::onControlChange()
     }
 }
 
-void YMSynthControllerClass::onProgramChange()
+void SynthControllerClass::onProgramChange()
 {
 
 }
 
-void YMSynthControllerClass::onAfterTouch()
+void SynthControllerClass::onAfterTouch()
 {
 
 }
 
-void YMSynthControllerClass::onPitchBend()
+void SynthControllerClass::onPitchBend()
 {
     uint8_t * m = &channels[2];
     uint8_t synth = 3;

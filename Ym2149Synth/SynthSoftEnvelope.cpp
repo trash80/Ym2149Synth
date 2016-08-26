@@ -1,16 +1,16 @@
 /*
- * YmSynth
+ * Ym2149Synth
  * http://trash80.com
  * Copyright (c) 2016 Timothy Lamb
  *
- * This file is part of YmSynth.
+ * This file is part of Ym2149Synth.
  *
- * YmSynth is free software: you can redistribute it and/or modify
+ * Ym2149Synth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * YmSynth is distributed in the hope that it will be useful,
+ * Ym2149Synth is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -20,14 +20,14 @@
  *
  */
 
-#include "YMSoftEnvelope.h"
+#include "SynthSoftEnvelope.h"
 
-void YMSoftEnvelopeClass::begin()
+void SynthSoftEnvelopeClass::begin()
 {
 
 }
 
-bool YMSoftEnvelopeClass::update()
+bool SynthSoftEnvelopeClass::update()
 {
     uint8_t was = value;
 
@@ -57,28 +57,28 @@ bool YMSoftEnvelopeClass::update()
     }
 }
 
-uint8_t YMSoftEnvelopeClass::read()
+uint8_t SynthSoftEnvelopeClass::read()
 {
     return value;
 }
 
-void YMSoftEnvelopeClass::rewind()
+void SynthSoftEnvelopeClass::rewind()
 {
     phase -= increment;
 }
 
-void YMSoftEnvelopeClass::setRange(uint8_t mn, uint8_t mx)
+void SynthSoftEnvelopeClass::setRange(uint8_t mn, uint8_t mx)
 {
     min = mn;
     max = mx;
 }
 
-uint8_t YMSoftEnvelopeClass::getShape()
+uint8_t SynthSoftEnvelopeClass::getShape()
 {
     return shape;
 }
 
-void YMSoftEnvelopeClass::setShape(uint8_t v)
+void SynthSoftEnvelopeClass::setShape(uint8_t v)
 {
     shape = v<<1;
     uint16_t ms = shape&0x7F;
@@ -86,7 +86,7 @@ void YMSoftEnvelopeClass::setShape(uint8_t v)
     increment = 1.0f/ms;
 }
 
-void YMSoftEnvelopeClass::reset()
+void SynthSoftEnvelopeClass::reset()
 {
     phase = 0;
     value = -1;

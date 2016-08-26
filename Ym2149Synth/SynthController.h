@@ -1,16 +1,16 @@
 /*
- * YmSynth
+ * Ym2149Synth
  * http://trash80.com
  * Copyright (c) 2016 Timothy Lamb
  *
- * This file is part of YmSynth.
+ * This file is part of Ym2149Synth.
  *
- * YmSynth is free software: you can redistribute it and/or modify
+ * Ym2149Synth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * YmSynth is distributed in the hope that it will be useful,
+ * Ym2149Synth is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -20,18 +20,18 @@
  *
  */
 
-#ifndef YMSYNTHCONTROLLER_h
-#define YMSYNTHCONTROLLER_h
+#ifndef SYNTHCONTROLLER_h
+#define SYNTHCONTROLLER_h
 
 #include "MidiCallback.h"
 #include "MidiHandler.h"
 #include "YM2149.h"
-#include "YMPresetStorage.h"
-#include "YMSynthVoice.h"
+#include "SynthPresetStorage.h"
+#include "SynthVoice.h"
 
-class YMSynthControllerClass : public MidiCallbackClass {
+class SynthControllerClass : public MidiCallbackClass {
   public:
-    YMSynthControllerClass() {};
+    SynthControllerClass() {};
     void attachMidi(MidiHandlerClass * midiHandler) {
         midi = midiHandler;
     };
@@ -55,7 +55,7 @@ class YMSynthControllerClass : public MidiCallbackClass {
     void onTransportStop(){};
     void onTransportContinue(){};
 
-    YMSynthVoice Synth[3];
+    SynthVoice Synth[3];
     YM2149 Ym;
     uint8_t channels[3];
 
@@ -63,7 +63,7 @@ class YMSynthControllerClass : public MidiCallbackClass {
       MidiHandlerClass * midi;
 };
 
-typedef YMSynthControllerClass YMSynthController;
+typedef SynthControllerClass SynthController;
 
 
 

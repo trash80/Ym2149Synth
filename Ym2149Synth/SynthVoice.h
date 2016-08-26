@@ -1,16 +1,16 @@
 /*
- * YmSynth
+ * Ym2149Synth
  * http://trash80.com
  * Copyright (c) 2016 Timothy Lamb
  *
- * This file is part of YmSynth.
+ * This file is part of Ym2149Synth.
  *
- * YmSynth is free software: you can redistribute it and/or modify
+ * Ym2149Synth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * YmSynth is distributed in the hope that it will be useful,
+ * Ym2149Synth is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -19,19 +19,19 @@
  * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
- 
-#ifndef YMSYNTHVOICE_h
-#define YMSYNTHVOICE_h
+
+#ifndef SYNTHVOICE_h
+#define SYNTHVOICE_h
 
 #include "Arduino.h"
 #include "YM2149.h"
-#include "YMSoftEnvelope.h"
+#include "SynthSoftEnvelope.h"
 
-class YMSynthVoiceClass {
+class SynthVoiceClass {
   public:
 
-    YMSoftEnvelope volumeEnvelope;
-    YMSoftEnvelope pitchEnvelope;
+    SynthSoftEnvelope volumeEnvelope;
+    SynthSoftEnvelope pitchEnvelope;
     bool playing;
 
     void begin(YM2149 * ym, uint8_t sy);
@@ -104,6 +104,6 @@ class YMSynthVoiceClass {
 
 };
 
-typedef YMSynthVoiceClass YMSynthVoice;
+typedef SynthVoiceClass SynthVoice;
 
 #endif
