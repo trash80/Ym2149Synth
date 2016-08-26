@@ -1,0 +1,70 @@
+/*
+ * YmSynth
+ * http://trash80.com
+ * Copyright (c) 2016 Timothy Lamb
+ *
+ * This file is part of YmSynth.
+ *
+ * YmSynth is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * YmSynth is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+#ifndef YMSYNTHCONTROLLER_h
+#define YMSYNTHCONTROLLER_h
+
+#include "MidiCallback.h"
+#include "MidiHandler.h"
+#include "YM2149.h"
+#include "YMPresetStorage.h"
+#include "YMSynthVoice.h"
+
+class YMSynthControllerClass : public MidiCallbackClass {
+  public:
+    YMSynthControllerClass() {};
+    void attachMidi(MidiHandlerClass * midiHandler) {
+        midi = midiHandler;
+    };
+    void setChannels(uint8_t c1, int8_t c2, int8_t c3);
+    void updateSoftSynths();
+    void updateEvents();
+    void begin();
+    void update();
+    void onNoteOn();
+    void onNoteOff();
+    void onControlChange();
+    void onProgramChange();
+    void onAfterTouch();
+    void onPitchBend();
+
+    void onCommand(){};
+    void onData1(){};
+    void onPolyPressure(){};
+    void onTransportClock(){};
+    void onTransportStart(){};
+    void onTransportStop(){};
+    void onTransportContinue(){};
+
+    YMSynthVoice Synth[3];
+    YM2149 Ym;
+    uint8_t channels[3];
+
+  private:
+      MidiHandlerClass * midi;
+};
+
+typedef YMSynthControllerClass YMSynthController;
+
+
+
+#endif
