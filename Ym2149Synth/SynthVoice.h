@@ -38,7 +38,9 @@ class SynthVoiceClass {
     void updateSoftsynth();
     void updateEvents();
     void playNote(uint8_t n, uint8_t v);
-    void setPitchEnvelopeAmount(uint8_t v);
+    void setVolumeEnvShape(uint8_t v);
+    void setPitchEnvAmount(uint8_t v);
+    void setPitchEnvShape(uint8_t v);
     void setVibratoAttack(uint8_t v);
     void setVibratoAmount(uint8_t v);
     void setVibratoFreq(uint8_t v);

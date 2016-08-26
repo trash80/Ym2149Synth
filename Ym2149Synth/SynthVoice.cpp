@@ -55,7 +55,7 @@ void SynthVoice::begin(YM2149 * ym, uint8_t sy)
     pitchEnvelope.begin();
 
     volumeEnvelope.setShape(0x00);
-    volumeEnvelope.setRange(0,15);
+    volumeEnvelope.setRange(0,31);
 
     pitchEnvelope.setShape(0x00);
     pitchEnvelope.setRange(0,255);
@@ -246,7 +246,18 @@ void SynthVoice::setGlide(uint8_t v)
     glide = 1.0f/ms;
 }
 
-void SynthVoice::setPitchEnvelopeAmount(uint8_t v)
+void SynthVoice::setVolumeEnvShape(uint8_t v)
+{
+    if(v == 64) v = 65;
+    volumeEnvelope.setShape(v);
+}
+
+void SynthVoice::setPitchEnvShape(uint8_t v)
+{
+    pitchEnvelope.setShape(v);
+}
+
+void SynthVoice::setPitchEnvAmount(uint8_t v)
 {
     pitchEnvAmount = v;
 }
