@@ -146,10 +146,10 @@ void SynthControllerClass::onControlChange()
                 Synth[synth].setGlide(midi->getData2());
                 break;
             case 6:
-                Synth[synth].setVibratoAmount(midi->getData2());
+                Synth[synth].setVibratoFreq(midi->getData2());
                 break;
             case 7:
-                Synth[synth].setVibratoFreq(midi->getData2());
+                Synth[synth].setVibratoAmount(midi->getData2());
                 break;
             case 8:
                 Synth[synth].setNoiseDelay(midi->getData2());
