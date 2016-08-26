@@ -20,7 +20,7 @@
  *
  */
 
- #include "MidiHandler.h"
+#include "MidiHandler.h"
 
 void MidiHandlerClass::begin()
 {

@@ -45,6 +45,8 @@ void updateEvents()
 
 void setup()
 {
+    pinMode(13,OUTPUT); // debug led on teensy
+    
     synth.attachMidi(&midi);
     synth.setChannels(3,4,5);
     synth.begin();

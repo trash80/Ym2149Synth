@@ -26,7 +26,7 @@
 #include "MidiCallback.h"
 #include "MidiHandler.h"
 #include "YM2149.h"
-#include "SynthPresetStorage.h"
+#include "SynthPatchStorage.h"
 #include "SynthVoice.h"
 
 class SynthControllerClass : public MidiCallbackClass {
@@ -56,6 +56,7 @@ class SynthControllerClass : public MidiCallbackClass {
     void onTransportContinue(){};
 
     SynthVoice Synth[3];
+    SynthPatchStorage Patch[3];
     YM2149 Ym;
     uint8_t channels[3];
 

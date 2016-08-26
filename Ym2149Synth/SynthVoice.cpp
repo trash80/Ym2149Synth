@@ -145,7 +145,7 @@ void SynthVoice::updateEvents()
                 Ym->setTone(4,freqTable[f+pwmFreq]);
             }
             if (enableNoise || noiseDelayTriggered) {
-                Ym->setTone(3,31 - ((f/10)>>2));
+                Ym->setTone(3,0x1F - ((uint8_t)(f/10)>>2));
             }
         }
 
@@ -298,6 +298,7 @@ void SynthVoice::setNoiseDelay(uint8_t v)
 
 void SynthVoice::setTranspose(uint8_t v)
 {
+    if(!v) v = 64;
     transpose = (((int)v) - 64) * 10;
 }
 

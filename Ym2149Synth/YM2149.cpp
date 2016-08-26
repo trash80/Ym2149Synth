@@ -222,7 +222,7 @@ void YM2149Class::setTone(uint8_t voice, uint16_t value)
             write(REG_C_FREQ+1, (value>>8)&0x0F);
         break;
         case 3:
-            write(REG_NOISE_FREQ, (value&0xFF));
+            write(REG_NOISE_FREQ, (value&0x1F));
         break;
         case 4:
             value >>= 4;

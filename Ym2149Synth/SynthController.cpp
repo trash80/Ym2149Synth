@@ -40,8 +40,11 @@ void SynthControllerClass::begin()
     Ym.setPin(8,1);
     Ym.mute();
 
+    Patch[0].init(); // Init memory / eeprom once.
+
     for(int x=0;x<3;x++) {
         Synth[x].begin(&Ym,x);
+        Patch[x].begin();
     }
 }
 
@@ -105,6 +108,9 @@ void SynthControllerClass::onControlChange()
             continue;
         }
         m--;
+
+        Patch[synth].setValue((uint8_t)(midi->getData1()-1), (uint8_t) midi->getData2());
+
         switch(midi->getData1()) {
             case 1:
                 Synth[synth].setPwmFreq(midi->getData2());
@@ -140,10 +146,11 @@ void SynthControllerClass::onControlChange()
                 Synth[synth].setTranspose(midi->getData2());
                 break;
             case 120:
-                //recallPreset(synth, midi->getData2());
+                Patch[synth].load(&Synth[synth],midi->getData2());
+                Patch[synth].recall(); // load patch into edit memory
                 break;
             case 121:
-                //if(midi->getData2()) savePreset(synth);
+                Patch[synth].save(midi->getData2());
                 break;
         }
     }
@@ -151,7 +158,14 @@ void SynthControllerClass::onControlChange()
 
 void SynthControllerClass::onProgramChange()
 {
-
+    uint8_t * m = &channels[2];
+    uint8_t synth = 3;
+    while(synth--) {
+        if(*m == midi->getChannel()) {
+            Patch[synth].load(&Synth[synth],midi->getData1());
+        }
+        m--;
+    }
 }
 
 void SynthControllerClass::onAfterTouch()
