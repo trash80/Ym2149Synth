@@ -82,7 +82,9 @@ void SynthSoftEnvelopeClass::setShape(uint8_t v)
 {
     shape = v<<1;
     uint16_t ms = shape&0x7F;
-    ms = map(ms, 0, 127, 0, 4000);
+
+    ms = (pow(4000.0f,0.25f+((float)ms)/127.0f)) + 1;
+    //ms = map(ms, 0, 127, 0, 4000);
     increment = 1.0f/ms;
 }
 
