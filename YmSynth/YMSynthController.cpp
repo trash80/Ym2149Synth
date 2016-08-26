@@ -168,12 +168,12 @@ void YMSynthControllerClass::onPitchBend()
 
     pb = (unsigned short)midi->getData2();
     pb<<=7;
-    pb|=(unsigned short)midi->getData1();
+    pb|= (unsigned short)midi->getData1();
     v = ((int)pb) - 0x2000;
 
     while(synth--) {
         if(*m == midi->getChannel()) {
-            Synth[(synth-1)].setPitchbend(v);
+            Synth[synth].setPitchbend(v);
         }
         m--;
     }
