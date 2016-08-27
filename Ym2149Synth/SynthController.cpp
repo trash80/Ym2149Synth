@@ -22,6 +22,8 @@
 
 #include "SynthController.h"
 
+//@TODO document this class
+
 void SynthControllerClass::begin()
 {
     Ym.begin();

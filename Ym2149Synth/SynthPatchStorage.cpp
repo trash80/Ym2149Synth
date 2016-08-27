@@ -22,6 +22,8 @@
 
 #include "SynthPatchStorage.h"
 
+//@TODO document this class
+
 uint8_t SynthPatchStorageClass::bank[16][16];
 
 void SynthPatchStorageClass::begin()

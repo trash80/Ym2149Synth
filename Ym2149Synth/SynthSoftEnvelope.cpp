@@ -22,6 +22,8 @@
 
 #include "SynthSoftEnvelope.h"
 
+//@TODO document this class
+
 void SynthSoftEnvelopeClass::begin()
 {
 
@@ -29,6 +31,7 @@ void SynthSoftEnvelopeClass::begin()
 
 bool SynthSoftEnvelopeClass::update()
 {
+    //@TODO add slope curve option, add a release state
     uint8_t was = value;
 
     if(!shape) {

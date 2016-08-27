@@ -22,6 +22,8 @@
 
 #include "MidiHandler.h"
 
+//@TODO document this class
+
 void MidiHandlerClass::begin()
 {
     serial->begin(baudRate);
