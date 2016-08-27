@@ -10,14 +10,14 @@ YM2149F Teensy Synthesizer
 * CC1 - Softwave voice/Env finetune (Software PWM)
 * CC2 - Softwave note detune
 * CC3 - Synth Type:
-        0 - Square
-        1 - Square + Env Saw
-        2 - Square + Env Triangle
-        3 - Env Triangle
-        4 - Env Saw
-        5 - Softwave + Square (PWM)
-        6 - Software only
-        7 - Noise
+  * 0 - Square
+  * 1 - Square + Env Saw
+  * 2 - Square + Env Triangle
+  * 3 - Env Triangle
+  * 4 - Env Saw
+  * 5 - Softwave + Square (PWM)
+  * 6 - Software only
+  * 7 - Noise
 * CC4 - Volume Env Shape: 0=OFF, 1-63=Ramp up time, 64-127 Ramp down time
 * CC5 - Note Glide Amount
 * CC6 - Vibrato Rate
