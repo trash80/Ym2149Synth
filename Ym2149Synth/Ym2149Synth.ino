@@ -48,12 +48,12 @@ void setup()
     pinMode(13,OUTPUT); // debug led on teensy
 
     synth.attachMidi(&midi);
-    synth.setChannels(3,4,5);
+    synth.setChannels(1,2,3);
     synth.begin();
 
     midi.enableUsbMidi();
     midi.enableMidiRelay();
-    midi.begin(2000000);
+    midi.begin(31250);
 
     samplerTimer.begin(updateSoftSynth, softSynthTimer);
     samplerTimer.priority(0);
