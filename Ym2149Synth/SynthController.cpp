@@ -172,6 +172,13 @@ void SynthControllerClass::onControlChange()
             case 121:
                 Patch[synth].save(midi->getData2());
                 break;
+            case 122:
+                uint8_t buffer[Patch[synth].patchSize];
+                Patch[0].getPatch(&buffer[0], midi->getData2());
+                for(uint8_t i=0;i!=Patch[synth].patchSize;i++) {
+                    midi->sendControlChange(midi->getChannel(), i+1, buffer[i]);
+                }
+                break;
         }
     }
 }
