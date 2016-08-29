@@ -75,8 +75,8 @@ void SynthPatchStorageClass::load(SynthVoice * synth, int patch)
     synth->setSynthType(*(pp++));
     synth->setVolumeEnvShape(*(pp++));
     synth->setGlide(*(pp++));
-    synth->setVibratoAmount(*(pp++));
     synth->setVibratoFreq(*(pp++));
+    synth->setVibratoAmount(*(pp++));
     synth->setNoiseDelay(*(pp++));
     synth->setPitchEnvAmount(*(pp++));
     synth->setPitchEnvShape(*(pp++));
