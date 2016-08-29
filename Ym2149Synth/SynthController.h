@@ -24,36 +24,23 @@
 #define SYNTHCONTROLLER_h
 
 #include "MidiCallback.h"
-#include "MidiHandler.h"
 #include "YM2149.h"
 #include "SynthPatchStorage.h"
 #include "SynthVoice.h"
 
-class SynthControllerClass : public MidiCallbackClass {
+class SynthControllerClass : public MidiCallback {
   public:
-    SynthControllerClass() {};
-    void attachMidi(MidiHandlerClass * midiHandler) {
-        midi = midiHandler;
-    };
     void setChannels(uint8_t c1, int8_t c2, int8_t c3);
     void updateSoftSynths();
     void updateEvents();
     void begin();
     void update();
-    void onNoteOn();
-    void onNoteOff();
-    void onControlChange();
-    void onProgramChange();
-    void onAfterTouch();
-    void onPitchBend();
-
-    void onCommand(){};
-    void onData1(){};
-    void onPolyPressure(){};
-    void onTransportClock(){};
-    void onTransportStart(){};
-    void onTransportStop(){};
-    void onTransportContinue(){};
+    void onNoteOn(MidiCallbackClass * midi);
+    void onNoteOff(MidiCallbackClass * midi);
+    void onControlChange(MidiCallbackClass * midi);
+    void onProgramChange(MidiCallbackClass * midi);
+    void onAfterTouch(MidiCallbackClass * midi);
+    void onPitchBend(MidiCallbackClass * midi);
 
     SynthVoice Synth[3];
     SynthPatchStorage Patch[3];
@@ -61,7 +48,6 @@ class SynthControllerClass : public MidiCallbackClass {
     uint8_t channels[3];
 
   private:
-      MidiHandlerClass * midi;
       int8_t keyTrig[3];
 };
 

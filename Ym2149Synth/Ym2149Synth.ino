@@ -20,12 +20,14 @@
  *
  */
 
-#include "MidiHandler.h"
+#include "MidiDeviceUsb.h"
+#include "MidiDeviceSerial.h"
 #include "SynthController.h"
 
 SynthController synth;
 
-MidiHandler midi(&Serial1, &synth);
+MidiDeviceSerial midi(&Serial1);
+MidiDeviceUsb usbMidi;
 
 IntervalTimer samplerTimer;
 IntervalTimer eventTimer;
@@ -47,13 +49,12 @@ void setup()
 {
     pinMode(13,OUTPUT); // debug led on teensy
 
-    synth.attachMidi(&midi);
     synth.setChannels(1,2,3);
     synth.begin();
 
-    midi.enableUsbMidi();
-    midi.enableMidiRelay();
-    midi.begin(31250);
+    usbMidi.setCallback(&synth);
+    midi.setCallback(&synth);
+    midi.begin();
 
     samplerTimer.begin(updateSoftSynth, softSynthTimer);
     samplerTimer.priority(0);
@@ -65,5 +66,5 @@ void setup()
 void loop()
 {
     midi.update();
-    synth.update();
+    usbMidi.update();
 }
