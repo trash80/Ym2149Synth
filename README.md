@@ -7,16 +7,16 @@ YM2149F Teensy Synthesizer
 3 voices, 1 MIDI channel per voice.
 
 ### CC Map:
-* CC1 - Softwave voice/Env finetune (Software PWM)
-* CC2 - Softwave note detune
+* CC1 - Softwave-voice / Env-voice finetune (Software PWM)
+* CC2 - Softwave-voice note detune in synth type:5, otherwise square-voice detune
 * CC3 - Synth Type:
-  * 0 - Square
-  * 1 - Square + Env Saw
-  * 2 - Square + Env Triangle
-  * 3 - Env Triangle
-  * 4 - Env Saw
-  * 5 - Softwave + Square (PWM)
-  * 6 - Software only
+  * 0 - Square-voice
+  * 1 - Square-voice + Env-voice Saw (Square pitch modulations are soloed for "acid" effects.)
+  * 2 - Square-voiec + Env-voice Triangle (Square pitch modulations are soloed for "acid" effects.)
+  * 3 - Env-voice Triangle
+  * 4 - Env-voice Saw
+  * 5 - Square-voice + Softwave-voice (PWM)
+  * 6 - Square-voice + Softwave-voice (Square pitch modulations are soloed for "acid" effects.)
   * 7 - Noise
 * CC4 - Volume Env Shape: 0=OFF, 1-63=Ramp up time, 64-127 Ramp down time
 * CC5 - Note Glide Amount
