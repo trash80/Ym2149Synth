@@ -63,10 +63,10 @@ class SynthVoiceClass {
     bool enableSoftDetune;
     bool enableNoise;
     bool enableEnv;
+    bool voicePitchModOnly;
 
     uint8_t envType;
 
-    uint8_t softShape;
     float softPhase;
     float softIncrement;
     float softWidth;

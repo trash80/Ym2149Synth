@@ -97,68 +97,80 @@ void SynthVoice::updateSoftsynth()
 void SynthVoice::updateEvents()
 {
     //@TODO optimize this, used fixed.h for fixed point math
-    uint16_t f = currentFreq+transpose;
-    float pitchEnvAmt = 0;
+    uint16_t voiceF = currentFreq+transpose;
+    uint16_t envF = 0;
+    uint16_t softF = 0;
 
     if(playing) {
+
         if(glide && notePitch != currentFreq) {
             if(notePitch > currentFreq) {
                 currentFreq += glideIncrement;
                 if(currentFreq > notePitch) currentFreq = notePitch;
-                f = currentFreq+transpose;
+                voiceF = currentFreq+transpose;
             } else if(notePitch < currentFreq) {
                 currentFreq -= glideIncrement;
                 if(currentFreq < notePitch) currentFreq = notePitch;
-                f = currentFreq+transpose;
+                voiceF = currentFreq+transpose;
             }
         }
+
+        if(bendWheel) {
+            voiceF += (bendWheel * 10);
+        }
+
+        envF = softF = voiceF;
 
         if(vibratoAmount && currentFreq) {
             vibratoPhase += vibratoIncrement;
             if(vibratoPhase > 1) vibratoPhase -= 2;
             if(vibratoPhase < -1) vibratoPhase += 2;
-            f += (((abs(vibratoPhase) * 2) - 1) * vibratoAmount);
+            voiceF += (((abs(vibratoPhase) * 2) - 1) * vibratoAmount);
         }
 
         if(pitchEnvAmount) {
             pitchEnvelope.update();
-            pitchEnvAmt = pitchEnvelope.read();
+            float pitchEnvAmt = pitchEnvelope.read();
             pitchEnvAmt /=255.0f;
             if(pitchEnvelope.getShape() & 0x80) {
                 pitchEnvAmt *= pitchEnvAmount * 10;
             } else {
                 pitchEnvAmt = (1.0f - pitchEnvAmt) * pitchEnvAmount * -10;
             }
-            f += pitchEnvAmt;
+            voiceF += pitchEnvAmt;
         }
 
-        if(bendWheel) {
-            f += (bendWheel * 10);
-        }
+        if(voiceF != lastNoteFreq) {
+            lastNoteFreq = voiceF;
 
-        if(f != lastNoteFreq) {
-            lastNoteFreq = f;
+            if(!voicePitchModOnly) {
+                envF = softF = voiceF;
+            }
 
             if(enableSoftsynth) {
-                uint16_t sf = f;
+                uint16_t sf = softF;
                 if(enableSoftDetune) sf +=pwmFreq+softFreqDetune;
                 if(sf>=tableSize) sf = tableSize-1;
                 softIncrement = softFreqTable[sf];
             }
 
             if(enableEnv) {
-                if(enableVoice) {
+                if(voicePitchModOnly) {
                     // Acid on the pitch Envelope
-                    Ym->setTone(synth,freqTable[f+(softFreqDetune>>1)]);
-                    Ym->setTone(4,freqTable[f-((uint16_t)pitchEnvAmt)+pwmFreq]);
+                    Ym->setTone(synth,freqTable[voiceF+(softFreqDetune>>1)]);
+                    Ym->setTone(4,freqTable[envF+pwmFreq]);
                 } else {
-                    Ym->setTone(4,freqTable[f+pwmFreq]);
+                    Ym->setTone(4,freqTable[voiceF+pwmFreq]);
                 }
             } else if (enableVoice) {
-                Ym->setTone(synth,freqTable[f]);
+                if(voicePitchModOnly) {
+                    Ym->setTone(synth,freqTable[voiceF+(softFreqDetune>>1)]);
+                } else {
+                    Ym->setTone(synth,freqTable[voiceF]);
+                }
             }
             if (enableNoise || noiseDelayTriggered) {
-                Ym->setTone(3,0x1F - ((uint8_t)(f/10)>>2));
+                Ym->setTone(3,0x1F - ((uint8_t)(voiceF/10)>>2));
             }
         }
 
@@ -344,7 +356,7 @@ void SynthVoice::setSynthType(uint8_t v)
     envType     = 0;
     enableNoise = false;
     enableSoftDetune = false;
-    softShape   = 1;
+    voicePitchModOnly = false;
 
     switch(synthType)
     {
@@ -352,11 +364,13 @@ void SynthVoice::setSynthType(uint8_t v)
             enableVoice = true;
         break;
         case 1:
+            voicePitchModOnly = true;
             enableVoice = true;
             enableEnv   = true;
             envType     = 1;
         break;
         case 2:
+            voicePitchModOnly = true;
             enableVoice = true;
             enableEnv   = true;
             envType     = 2;
@@ -376,10 +390,12 @@ void SynthVoice::setSynthType(uint8_t v)
             enableSoftsynth = true;
             enableSoftDetune  = true;
             softWidth = 0.5;
-            softShape = 1;
         break;
         case 6:
+            enableVoice = true;
             enableSoftsynth = true;
+            voicePitchModOnly = true;
+            enableSoftDetune  = false;
             softWidth = ((float)(pwmFreq)/255) + 0.5;
         break;
         case 7:
