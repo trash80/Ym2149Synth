@@ -98,6 +98,7 @@ void SynthVoice::updateEvents()
 {
     //@TODO optimize this, used fixed.h for fixed point math
     uint16_t f = currentFreq+transpose;
+    float pitchEnvAmt = 0;
 
     if(playing) {
         if(glide && notePitch != currentFreq) {
@@ -121,14 +122,14 @@ void SynthVoice::updateEvents()
 
         if(pitchEnvAmount) {
             pitchEnvelope.update();
-            float envAmt = pitchEnvelope.read();
-            envAmt /=255.0f;
+            pitchEnvAmt = pitchEnvelope.read();
+            pitchEnvAmt /=255.0f;
             if(pitchEnvelope.getShape() & 0x80) {
-                envAmt *= pitchEnvAmount * 10;
+                pitchEnvAmt *= pitchEnvAmount * 10;
             } else {
-                envAmt = (1.0f - envAmt) * pitchEnvAmount * -10;
+                pitchEnvAmt = (1.0f - pitchEnvAmt) * pitchEnvAmount * -10;
             }
-            f += envAmt;
+            f += pitchEnvAmt;
         }
 
         if(bendWheel) {
@@ -145,11 +146,16 @@ void SynthVoice::updateEvents()
                 softIncrement = softFreqTable[sf];
             }
 
-            if(enableVoice) {
-                Ym->setTone(synth,freqTable[f]);
-            }
             if(enableEnv) {
-                Ym->setTone(4,freqTable[f+pwmFreq]);
+                if(enableVoice) {
+                    // Acid on the pitch Envelope
+                    Ym->setTone(synth,freqTable[f+(softFreqDetune>>1)]);
+                    Ym->setTone(4,freqTable[f-((uint16_t)pitchEnvAmt)+pwmFreq]);
+                } else {
+                    Ym->setTone(4,freqTable[f+pwmFreq]);
+                }
+            } else if (enableVoice) {
+                Ym->setTone(synth,freqTable[f]);
             }
             if (enableNoise || noiseDelayTriggered) {
                 Ym->setTone(3,0x1F - ((uint8_t)(f/10)>>2));
@@ -161,7 +167,8 @@ void SynthVoice::updateEvents()
             if(volume == 0 && volumeEnvelope.getShape() & 0x80) {
                 playing = false;
             }
-            Ym->setVolume(synth,volume);
+            if(!enableSoftsynth)
+                Ym->setVolume(synth,volume);
         }
 
         if(noiseDelay && !noiseDelayTriggered) {
