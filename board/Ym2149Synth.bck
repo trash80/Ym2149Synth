@@ -1,0 +1,12 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP C
+D Unpolarized capacitor
+$ENDCMP
+#
+$CMP JACK_TRS_3PINS
+D audio jack TRS 6 pins
+K audio jack connector TRS
+$ENDCMP
+#
+#End Doc Library
