@@ -24,6 +24,7 @@
 #define SYNTHSOFTENVELOPE_h
 
 #include "Arduino.h"
+#include "fixed.h"
 
 class SynthSoftEnvelopeClass {
   public:
@@ -34,11 +35,14 @@ class SynthSoftEnvelopeClass {
     void rewind();
     void setShape(uint8_t v);
     void setRange(uint8_t mn, uint8_t mx);
+    void setLookupTable(const uint8_t t[], uint8_t size);
     uint8_t getShape();
     void reset();
 
   private:
     uint32_t t;
+    const uint8_t * lookupTable;
+    uint8_t lookupSize;
     float sampleRate;
     float phase;
     float increment;
