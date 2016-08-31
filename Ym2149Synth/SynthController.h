@@ -42,6 +42,8 @@ class SynthControllerClass : public MidiCallback {
     void onAfterTouch(MidiCallbackClass * midi);
     void onPitchBend(MidiCallbackClass * midi);
 
+    void benchmark();
+
     SynthVoice Synth[3];
     SynthPatchStorage Patch[3];
     YM2149 Ym;

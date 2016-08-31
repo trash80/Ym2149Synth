@@ -20,6 +20,11 @@
  *
  */
 
+/*
+Define BENCHMARK to run benchmarking (Look to method "benchmark" SynthController.cpp)
+*/
+//#define BENCHMARK 1
+
 #include "MidiDeviceUsb.h"
 #include "MidiDeviceSerial.h"
 #include "SynthController.h"
@@ -55,16 +60,20 @@ void setup()
     usbMidi.setCallback(&synth);
     midi.setCallback(&synth);
     midi.begin();
-
+#ifndef BENCHMARK
     samplerTimer.begin(updateSoftSynth, softSynthTimer);
     samplerTimer.priority(0);
     eventTimer.begin(updateEvents, 1000);
     eventTimer.priority(1);
-
+#endif
 }
 
 void loop()
 {
+#ifndef BENCHMARK
     midi.update();
     usbMidi.update();
+#else
+    synth.benchmark();
+#endif
 }

@@ -219,3 +219,37 @@ void SynthControllerClass::onPitchBend(MidiCallbackClass * midi)
         m--;
     }
 }
+
+void SynthControllerClass::benchmark()
+{
+    // Notes:
+    // uncomment BENCHMARK in Ym2149Synth.ino
+    // compile without usbMidi
+    // use serial monitor to get time
+    // current benchmark: 6977~7000
+
+    uint8_t synth = 3;
+    while(synth--) {
+        Synth[synth].setSynthType(0x06);
+        Synth[synth].setPwmFreq(0x01);
+        Synth[synth].setVolumeEnvShape(127);
+        Synth[synth].setPitchEnvShape(127);
+        Synth[synth].setPitchEnvAmount(127);
+        Synth[synth].setGlide(127);
+        Synth[synth].setVibratoAmount(127);
+        Synth[synth].setVibratoFreq(127);
+        Synth[synth].playNote(36,127);
+    }
+
+    unsigned long t1 = micros();
+
+    for(int i=0;i<100;i++) {
+        updateSoftSynths();
+        updateEvents();
+    }
+
+    unsigned long t2 = micros();
+
+    Serial.println(t2-t1);
+    delay(500);
+}
