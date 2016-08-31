@@ -294,7 +294,7 @@ void YM2149Class::setNoise(uint8_t voice, uint8_t value)
             value = 0b00000001;
         break;
         case 2:
-            value = 0b00001001;
+            value = 0b00000000;
         break;
         default:
             value = 0b00001000;
