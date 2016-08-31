@@ -31,8 +31,7 @@ class SynthSoftEnvelopeClass {
 
     void begin();
     bool update();
-    uint8_t read();
-    void rewind();
+    uint16_t read();
     void setShape(uint8_t v);
     void setRange(uint8_t mn, uint8_t mx);
     void setLookupTable(const uint8_t t[], uint8_t size);
@@ -43,12 +42,14 @@ class SynthSoftEnvelopeClass {
     uint32_t t;
     const uint8_t * lookupTable;
     uint8_t lookupSize;
-    float sampleRate;
-    float phase;
-    float increment;
+    uint16_t phase;
+    uint16_t size;
+    int16_t tick;
+    uint8_t increment;
+    uint8_t phaseLength;
     uint8_t shape;
-    uint8_t min;
-    uint8_t max;
+    uint16_t min;
+    uint16_t max;
     int value;
 };
 

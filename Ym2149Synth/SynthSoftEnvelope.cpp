@@ -20,13 +20,15 @@
  *
  */
 
+#define map_int16(x, in_min, in_max, out_min, out_max) (((int)x - (int)in_min) * ((int)out_max - (int)out_min) / ((int)in_max - (int)in_min) + (int)out_min)
+
 #include "SynthSoftEnvelope.h"
 
 //@TODO document this class
 
 void SynthSoftEnvelopeClass::begin()
 {
-
+    phaseLength = 255;
 }
 
 bool SynthSoftEnvelopeClass::update()
@@ -39,8 +41,30 @@ bool SynthSoftEnvelopeClass::update()
         return value != was;
     }
 
-    if(phase >= 1) {
-        if(shape >= 0x80) {
+    if(value == -1) {
+        // Initialize and send start value
+        value = 0;
+        if(shape & 0x80) {
+            value = (uint8_t) map_int16(value, 255, 0, min, max);
+        } else {
+            value = (uint8_t) map_int16(value, 0, 255, min, max);
+        }
+
+        return true;
+    }
+
+    tick-=1;
+    if(tick > 0) {
+        return false;
+    }
+
+    tick = size;
+    if(phase < 255) {
+        phase+=increment;
+    }
+
+    if(phase >= 255) {
+        if(shape & 0x80) {
             value = min;
             return value != was;
         } else {
@@ -49,36 +73,23 @@ bool SynthSoftEnvelopeClass::update()
         }
     }
 
-    phase += increment;
-
-    if(shape >= 0x80) {
-        if(lookupSize) {
-            value = lookupTable[((uint8_t)(phase * (lookupSize-1)))];
-        } else {
-            value = (uint8_t)(phase * 255);
-        }
-        value = (uint8_t) map(255 - value,0, 255, min, max);
-        return value != was;
+    if(lookupSize) {
+        value = lookupTable[phase];
     } else {
-        if(lookupSize) {
-            value = lookupTable[((uint8_t)(phase * (lookupSize-1)))];
-        } else {
-            value = (uint8_t)(phase * 255);
-        }
-        value = (uint8_t) map(value,0, 255, min, max);
-        return value != was;
+        value = phase;
     }
+    if(shape & 0x80) {
+        value = (uint8_t) map_int16(value,255, 0, min, max);
+    } else {
+        value = (uint8_t) map_int16(value,0, 255, min, max);
+    }
+
+    return value != was;
 }
 
-uint8_t SynthSoftEnvelopeClass::read()
+uint16_t SynthSoftEnvelopeClass::read()
 {
     return value;
-}
-
-void SynthSoftEnvelopeClass::rewind()
-{
-    if(phase >= increment)
-        phase -= increment;
 }
 
 void SynthSoftEnvelopeClass::setRange(uint8_t mn, uint8_t mx)
@@ -95,11 +106,11 @@ uint8_t SynthSoftEnvelopeClass::getShape()
 void SynthSoftEnvelopeClass::setShape(uint8_t v)
 {
     shape = v<<1;
-    uint16_t ms = shape&0x7F;
-
-    ms = (pow(4000.0f,0.25f+((float)ms)/127.0f)) + 1;
-    //ms = map(ms, 0, 127, 0, 4000);
-    increment = 1.0f/ms;
+    size = (((((unsigned long)(shape&0x7F))<<5))/255);
+    increment = 1;
+    if(size == 0) {
+        increment = 255/((shape&0x7F)<<5);
+    }
 }
 
 void SynthSoftEnvelopeClass::setLookupTable(const uint8_t t[], uint8_t size)
@@ -110,6 +121,7 @@ void SynthSoftEnvelopeClass::setLookupTable(const uint8_t t[], uint8_t size)
 
 void SynthSoftEnvelopeClass::reset()
 {
+    tick = size;
     phase = 0;
     value = -1;
 }

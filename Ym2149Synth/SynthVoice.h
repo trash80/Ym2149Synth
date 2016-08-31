@@ -71,9 +71,9 @@ class SynthVoiceClass {
     float softIncrement;
     float softWidth;
 
-    float pitchEnvAmount;
+    uint16_t pitchEnvAmount;
 
-    float currentFreq;
+    uint16_t currentFreq;
     uint16_t lastNoteFreq;
 
     uint32_t softCurrentFreq;
@@ -87,15 +87,15 @@ class SynthVoiceClass {
     int volume;
 
     float glide;
-    float glideIncrement;
+    uint16_t glideIncrement;
 
     float bendWheel;
     int transpose;
 
     uint8_t noiseDelay;
     bool noiseDelayTriggered;
-    float noiseDelayIncrement;
-    float noiseDelayPhase;
+    uint16_t noiseDelayIncrement;
+    uint16_t noiseDelayPhase;
 
     uint8_t vibratoAmount;
     float vibratoPhase;
