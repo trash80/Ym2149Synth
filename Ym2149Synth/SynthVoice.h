@@ -41,7 +41,6 @@ class SynthVoiceClass {
     void setVolumeEnvShape(uint8_t v);
     void setPitchEnvAmount(uint8_t v);
     void setPitchEnvShape(uint8_t v);
-    void setVibratoAttack(uint8_t v);
     void setVibratoAmount(uint8_t v);
     void setVibratoFreq(uint8_t v);
     void setNoiseDelay(uint8_t v);
@@ -67,42 +66,39 @@ class SynthVoiceClass {
 
     uint8_t envType;
 
-    float softPhase;
-    float softIncrement;
-    float softWidth;
-
-    uint16_t pitchEnvAmount;
-
-    uint16_t currentFreq;
-    uint16_t lastNoteFreq;
-
-    uint32_t softCurrentFreq;
-    uint16_t softFreqDetune;
-    uint16_t pwmFreq;
+    uint32_t softPhase;
+    uint16_t softIncrement;
+    uint32_t softWidth;
     uint8_t softWavPos;
+
+    int volume;
 
     uint16_t note;
     uint8_t velocity;
-    uint16_t notePitch;
-    int volume;
+    uint16_t noteFreq;
+    uint16_t currentNoteFreq;
+    uint16_t lastNoteFreq;
 
-    float glide;
-    uint16_t glideIncrement;
-
-    float bendWheel;
     int transpose;
+    int bendWheel;
+
+    uint16_t pitchEnvAmount;
+    uint16_t softFreqDetune;
+    uint16_t pwmFreq;
+
+    bool glideActive;
+    uint16_t glide;
+    uint16_t glideIncrement;
+    uint32_t glidePhase;
+
+    int vibratoAmount;
+    int vibratoPhase;
+    int vibratoIncrement;
 
     uint8_t noiseDelay;
     bool noiseDelayTriggered;
     uint16_t noiseDelayIncrement;
     uint16_t noiseDelayPhase;
-
-    uint8_t vibratoAmount;
-    float vibratoPhase;
-    float vibratoIncrement;
-    float vibratoDelayIncrement;
-    float vibratoDelayPhase;
-
 
 };
 

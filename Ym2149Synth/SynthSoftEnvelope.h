@@ -24,7 +24,6 @@
 #define SYNTHSOFTENVELOPE_h
 
 #include "Arduino.h"
-#include "fixed.h"
 
 class SynthSoftEnvelopeClass {
   public:
@@ -33,7 +32,7 @@ class SynthSoftEnvelopeClass {
     bool update();
     uint16_t read();
     void setShape(uint8_t v);
-    void setRange(uint8_t mn, uint8_t mx);
+    void setRange(uint16_t mn, uint16_t mx);
     void setLookupTable(const uint8_t t[], uint8_t size);
     uint8_t getShape();
     void reset();
@@ -50,7 +49,7 @@ class SynthSoftEnvelopeClass {
     uint8_t shape;
     uint16_t min;
     uint16_t max;
-    int value;
+    uint16_t value;
 };
 
 typedef SynthSoftEnvelopeClass SynthSoftEnvelope;

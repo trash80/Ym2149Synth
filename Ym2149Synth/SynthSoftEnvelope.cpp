@@ -34,7 +34,7 @@ void SynthSoftEnvelopeClass::begin()
 bool SynthSoftEnvelopeClass::update()
 {
     //@TODO add slope curve option, add a release state
-    uint8_t was = value;
+    uint16_t was = value;
 
     if(!shape) {
         value = max;
@@ -45,9 +45,9 @@ bool SynthSoftEnvelopeClass::update()
         // Initialize and send start value
         value = 0;
         if(shape & 0x80) {
-            value = (uint8_t) map_int16(value, 255, 0, min, max);
+            value = (uint16_t) map_int16(value, 255, 0, min, max);
         } else {
-            value = (uint8_t) map_int16(value, 0, 255, min, max);
+            value = (uint16_t) map_int16(value, 0, 255, min, max);
         }
 
         return true;
@@ -79,9 +79,9 @@ bool SynthSoftEnvelopeClass::update()
         value = phase;
     }
     if(shape & 0x80) {
-        value = (uint8_t) map_int16(value,255, 0, min, max);
+        value = (uint16_t) map_int16(value,255, 0, min, max);
     } else {
-        value = (uint8_t) map_int16(value,0, 255, min, max);
+        value = (uint16_t) map_int16(value,0, 255, min, max);
     }
 
     return value != was;
@@ -92,7 +92,7 @@ uint16_t SynthSoftEnvelopeClass::read()
     return value;
 }
 
-void SynthSoftEnvelopeClass::setRange(uint8_t mn, uint8_t mx)
+void SynthSoftEnvelopeClass::setRange(uint16_t mn, uint16_t mx)
 {
     min = mn;
     max = mx;

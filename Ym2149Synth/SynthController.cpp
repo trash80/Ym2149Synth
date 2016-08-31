@@ -226,7 +226,7 @@ void SynthControllerClass::benchmark()
     // uncomment BENCHMARK in Ym2149Synth.ino
     // compile without usbMidi
     // use serial monitor to get time
-    // current benchmark: 6977~7000
+    // Before optimization: ~11800 current: ~2930
 
     uint8_t synth = 3;
     while(synth--) {
@@ -242,7 +242,7 @@ void SynthControllerClass::benchmark()
     }
 
     unsigned long t1 = micros();
-
+    updateEvents();
     for(int i=0;i<100;i++) {
         updateSoftSynths();
         updateEvents();
