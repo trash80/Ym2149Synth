@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 199.0, 79.0, 1272.0, 626.0 ],
+		"rect" : [ 60.0, 79.0, 1003.0, 626.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -38,13 +38,109 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 556.5, 59.0, 172.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 225.0, 10.0, 115.0, 20.0 ],
+					"style" : "",
+					"text" : "MIDI Channel"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 111.0, 387.0, 29.5, 22.0 ],
+					"style" : "",
+					"text" : "- 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "number",
+					"maximum" : 16,
+					"minimum" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 111.0, 356.0, 50.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 171.0, 9.0, 50.0, 22.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 24.0, 356.0, 51.0, 22.0 ],
+					"style" : "",
+					"text" : "123 6 6"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 73.5, 494.5, 29.5, 22.0 ],
+					"style" : "",
+					"text" : "+ 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 73.5, 530.0, 67.0, 22.0 ],
+					"style" : "",
+					"text" : "pack i i i"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "int", "int" ],
+					"patching_rect" : [ 73.5, 463.0, 67.0, 22.0 ],
+					"style" : "",
+					"text" : "unpack i i i"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-209",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 541.5, 44.0, 172.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 250.0, 10.0, 115.0, 20.0 ],
+					"presentation_rect" : [ 422.0, 10.0, 115.0, 20.0 ],
 					"style" : "",
 					"text" : "This is not done. :)"
 				}
@@ -59,20 +155,6 @@
 					"patching_rect" : [ 274.0, 269.0, 34.0, 22.0 ],
 					"style" : "",
 					"text" : "print"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-206",
-					"linecount" : 2,
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 212.0, 510.0, 50.0, 35.0 ],
-					"style" : "",
-					"text" : "146 36 0"
 				}
 
 			}
@@ -4856,7 +4938,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 232.0, 371.0, 71.0, 22.0 ],
 					"style" : "",
-					"text" : "178 121 $1"
+					"text" : "176 121 $1"
 				}
 
 			}
@@ -5018,7 +5100,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 235.0, 71.0, 22.0 ],
 									"style" : "",
-									"text" : "178 122 $1"
+									"text" : "176 122 $1"
 								}
 
 							}
@@ -5497,7 +5579,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-1",
@@ -5520,7 +5601,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 64.0, 165.0, 57.0, 22.0 ],
 									"style" : "",
-									"text" : "146 36 0"
+									"text" : "144 36 0"
 								}
 
 							}
@@ -5531,9 +5612,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 64.0, 135.0, 70.0, 22.0 ],
+									"patching_rect" : [ 64.0, 135.0, 63.0, 22.0 ],
 									"style" : "",
-									"text" : "pipe 16000"
+									"text" : "pipe 4000"
 								}
 
 							}
@@ -5546,7 +5627,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 100.0, 71.0, 22.0 ],
 									"style" : "",
-									"text" : "146 36 127"
+									"text" : "144 36 127"
 								}
 
 							}
@@ -5651,7 +5732,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 245.5, 449.0, 44.0, 22.0 ],
+					"patching_rect" : [ 181.5, 425.0, 44.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -5675,7 +5756,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 116.0, 179.5, 33.0, 62.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 175.0, 9.0, 68.0, 22.0 ],
+					"presentation_rect" : [ 347.0, 9.0, 68.0, 22.0 ],
 					"style" : "",
 					"text" : "Load Bank"
 				}
@@ -5712,7 +5793,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 155.0, 371.0, 64.0, 22.0 ],
 					"style" : "",
-					"text" : "178 $1 $2"
+					"text" : "176 $1 $2"
 				}
 
 			}
@@ -5781,7 +5862,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 97.5, 431.0, 49.0, 22.0 ],
+					"patching_rect" : [ 28.0, 572.0, 49.0, 22.0 ],
 					"style" : "",
 					"text" : "midiout"
 				}
@@ -5839,7 +5920,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
+					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-106", 0 ]
@@ -5848,7 +5929,16 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
+					"destination" : [ "obj-12", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-112", 0 ]
@@ -5861,6 +5951,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-118", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 0 ]
 				}
 
 			}
@@ -6640,10 +6739,55 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-5", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-4", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-4", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
 					"source" : [ "obj-58", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
 				}
 
 			}
@@ -6685,16 +6829,16 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
+					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-98", 0 ]
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-206", 1 ],
+					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-98", 0 ]
@@ -6703,182 +6847,182 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-148::obj-46" : [ "Pit Env[2]", "Pit Env", 0 ],
-			"obj-184::obj-23" : [ "S.Tune[11]", "S.Tune", 0 ],
-			"obj-148::obj-48" : [ "P.Shape[2]", "P.Shape", 0 ],
-			"obj-184::obj-36" : [ "Noise Delay[11]", "Noi Dly", 0 ],
-			"obj-168::obj-46" : [ "Pit Env[7]", "Pit Env", 0 ],
-			"obj-180::obj-34" : [ "Type[10]", "Type", 0 ],
-			"obj-168::obj-9" : [ "PWM[7]", "PWM", 0 ],
-			"obj-200::obj-40" : [ "Vibrato[15]", "Vib", 0 ],
-			"obj-180::obj-48" : [ "P.Shape[10]", "P.Shape", 0 ],
-			"obj-164::obj-25" : [ "Vol Env[6]", "Vol Env", 0 ],
 			"obj-200::obj-23" : [ "S.Tune[15]", "S.Tune", 0 ],
-			"obj-176::obj-9" : [ "PWM[9]", "PWM", 0 ],
-			"obj-63::obj-40" : [ "Vibrato", "Vib", 0 ],
-			"obj-164::obj-36" : [ "Noise Delay[6]", "Noi Dly", 0 ],
-			"obj-196::obj-38" : [ "Vib Speed[14]", "Vib Rate", 0 ],
-			"obj-176::obj-40" : [ "Vibrato[9]", "Vib", 0 ],
-			"obj-160::obj-42" : [ "Glide[5]", "Glide", 0 ],
-			"obj-196::obj-20" : [ "Transpose[14]", "Trans", 0 ],
-			"obj-176::obj-36" : [ "Noise Delay[9]", "Noi Dly", 0 ],
-			"obj-144::obj-36" : [ "Noise Delay[1]", "Noi Dly", 0 ],
-			"obj-160::obj-48" : [ "P.Shape[5]", "P.Shape", 0 ],
-			"obj-192::obj-42" : [ "Glide[13]", "Glide", 0 ],
-			"obj-172::obj-42" : [ "Glide[8]", "Glide", 0 ],
-			"obj-144::obj-23" : [ "S.Tune[1]", "S.Tune", 0 ],
-			"obj-160::obj-38" : [ "Vib Speed[5]", "Vib Rate", 0 ],
-			"obj-192::obj-34" : [ "Type[13]", "Type", 0 ],
-			"obj-172::obj-25" : [ "Vol Env[8]", "Vol Env", 0 ],
-			"obj-152::obj-34" : [ "Type[3]", "Type", 0 ],
-			"obj-156::obj-42" : [ "Glide[4]", "Glide", 0 ],
-			"obj-192::obj-38" : [ "Vib Speed[13]", "Vib Rate", 0 ],
-			"obj-152::obj-38" : [ "Vib Speed[3]", "Vib Rate", 0 ],
-			"obj-188::obj-36" : [ "Noise Delay[12]", "Noi Dly", 0 ],
-			"obj-152::obj-9" : [ "PWM[3]", "PWM", 0 ],
-			"obj-188::obj-34" : [ "Type[12]", "Type", 0 ],
 			"obj-148::obj-40" : [ "Vibrato[2]", "Vib", 0 ],
-			"obj-184::obj-20" : [ "Transpose[11]", "Trans", 0 ],
-			"obj-148::obj-25" : [ "Vol Env[2]", "Vol Env", 0 ],
-			"obj-184::obj-25" : [ "Vol Env[11]", "Vol Env", 0 ],
-			"obj-168::obj-20" : [ "Transpose[7]", "Trans", 0 ],
-			"obj-156::obj-46" : [ "Pit Env[4]", "Pit Env", 0 ],
-			"obj-180::obj-36" : [ "Noise Delay[10]", "Noi Dly", 0 ],
-			"obj-168::obj-40" : [ "Vibrato[7]", "Vib", 0 ],
-			"obj-200::obj-20" : [ "Transpose[15]", "Trans", 0 ],
-			"obj-180::obj-46" : [ "Pit Env[10]", "Pit Env", 0 ],
-			"obj-164::obj-48" : [ "P.Shape[6]", "P.Shape", 0 ],
-			"obj-200::obj-38" : [ "Vib Speed[15]", "Vib Rate", 0 ],
-			"obj-176::obj-38" : [ "Vib Speed[9]", "Vib Rate", 0 ],
-			"obj-164::obj-42" : [ "Glide[6]", "Glide", 0 ],
-			"obj-196::obj-40" : [ "Vibrato[14]", "Vib", 0 ],
-			"obj-176::obj-25" : [ "Vol Env[9]", "Vol Env", 0 ],
-			"obj-160::obj-46" : [ "Pit Env[5]", "Pit Env", 0 ],
-			"obj-196::obj-48" : [ "P.Shape[14]", "P.Shape", 0 ],
-			"obj-172::obj-34" : [ "Type[8]", "Type", 0 ],
-			"obj-63::obj-20" : [ "Transpose", "Trans", 0 ],
-			"obj-144::obj-25" : [ "Vol Env[1]", "Vol Env", 0 ],
-			"obj-160::obj-23" : [ "S.Tune[5]", "S.Tune", 0 ],
-			"obj-192::obj-48" : [ "P.Shape[13]", "P.Shape", 0 ],
-			"obj-172::obj-46" : [ "Pit Env[8]", "Pit Env", 0 ],
-			"obj-144::obj-34" : [ "Type[1]", "Type", 0 ],
-			"obj-156::obj-48" : [ "P.Shape[4]", "P.Shape", 0 ],
-			"obj-192::obj-36" : [ "Noise Delay[13]", "Noi Dly", 0 ],
-			"obj-172::obj-36" : [ "Noise Delay[8]", "Noi Dly", 0 ],
-			"obj-63::obj-23" : [ "S.Tune", "S.Tune", 0 ],
-			"obj-152::obj-40" : [ "Vibrato[3]", "Vib", 0 ],
-			"obj-156::obj-40" : [ "Vibrato[4]", "Vib", 0 ],
-			"obj-188::obj-40" : [ "Vibrato[12]", "Vib", 0 ],
-			"obj-63::obj-9" : [ "PWM", "PWM", 0 ],
-			"obj-152::obj-23" : [ "S.Tune[3]", "S.Tune", 0 ],
-			"obj-188::obj-9" : [ "PWM[12]", "PWM", 0 ],
-			"obj-148::obj-34" : [ "Type[2]", "Type", 0 ],
-			"obj-188::obj-23" : [ "S.Tune[12]", "S.Tune", 0 ],
-			"obj-148::obj-42" : [ "Glide[2]", "Glide", 0 ],
-			"obj-184::obj-48" : [ "P.Shape[11]", "P.Shape", 0 ],
-			"obj-148::obj-20" : [ "Transpose[2]", "Trans", 0 ],
-			"obj-184::obj-40" : [ "Vibrato[11]", "Vib", 0 ],
-			"obj-168::obj-48" : [ "P.Shape[7]", "P.Shape", 0 ],
-			"obj-156::obj-38" : [ "Vib Speed[4]", "Vib Rate", 0 ],
-			"obj-180::obj-40" : [ "Vibrato[10]", "Vib", 0 ],
-			"obj-168::obj-23" : [ "S.Tune[7]", "S.Tune", 0 ],
-			"obj-200::obj-34" : [ "Type[15]", "Type", 0 ],
-			"obj-180::obj-38" : [ "Vib Speed[10]", "Vib Rate", 0 ],
-			"obj-164::obj-23" : [ "S.Tune[6]", "S.Tune", 0 ],
-			"obj-200::obj-25" : [ "Vol Env[15]", "Vol Env", 0 ],
-			"obj-176::obj-46" : [ "Pit Env[9]", "Pit Env", 0 ],
-			"obj-164::obj-34" : [ "Type[6]", "Type", 0 ],
-			"obj-196::obj-25" : [ "Vol Env[14]", "Vol Env", 0 ],
-			"obj-176::obj-23" : [ "S.Tune[9]", "S.Tune", 0 ],
-			"obj-63::obj-42" : [ "Glide", "Glide", 0 ],
-			"obj-160::obj-34" : [ "Type[5]", "Type", 0 ],
-			"obj-196::obj-42" : [ "Glide[14]", "Glide", 0 ],
-			"obj-172::obj-9" : [ "PWM[8]", "PWM", 0 ],
-			"obj-63::obj-25" : [ "Vol Env", "Vol Env", 0 ],
-			"obj-144::obj-46" : [ "Pit Env[1]", "Pit Env", 0 ],
-			"obj-160::obj-40" : [ "Vibrato[5]", "Vib", 0 ],
-			"obj-192::obj-23" : [ "S.Tune[13]", "S.Tune", 0 ],
-			"obj-172::obj-40" : [ "Vibrato[8]", "Vib", 0 ],
-			"obj-144::obj-40" : [ "Vibrato[1]", "Vib", 0 ],
-			"obj-156::obj-34" : [ "Type[4]", "Type", 0 ],
-			"obj-192::obj-9" : [ "PWM[13]", "PWM", 0 ],
-			"obj-63::obj-34" : [ "Type", "Type", 0 ],
-			"obj-152::obj-48" : [ "P.Shape[3]", "P.Shape", 0 ],
-			"obj-156::obj-36" : [ "Noise Delay[4]", "Noi Dly", 0 ],
 			"obj-188::obj-20" : [ "Transpose[12]", "Trans", 0 ],
-			"obj-152::obj-46" : [ "Pit Env[3]", "Pit Env", 0 ],
+			"obj-168::obj-20" : [ "Transpose[7]", "Trans", 0 ],
+			"obj-184::obj-9" : [ "PWM[11]", "PWM", 0 ],
+			"obj-168::obj-48" : [ "P.Shape[7]", "P.Shape", 0 ],
+			"obj-184::obj-20" : [ "Transpose[11]", "Trans", 0 ],
+			"obj-196::obj-23" : [ "S.Tune[14]", "S.Tune", 0 ],
+			"obj-164::obj-23" : [ "S.Tune[6]", "S.Tune", 0 ],
+			"obj-192::obj-23" : [ "S.Tune[13]", "S.Tune", 0 ],
+			"obj-180::obj-46" : [ "Pit Env[10]", "Pit Env", 0 ],
+			"obj-144::obj-20" : [ "Transpose[1]", "Trans", 0 ],
+			"obj-192::obj-9" : [ "PWM[13]", "PWM", 0 ],
+			"obj-180::obj-23" : [ "S.Tune[10]", "S.Tune", 0 ],
+			"obj-63::obj-38" : [ "Vib Speed", "Vib Rate", 0 ],
+			"obj-144::obj-34" : [ "Type[1]", "Type", 0 ],
+			"obj-160::obj-20" : [ "Transpose[5]", "Trans", 0 ],
+			"obj-192::obj-42" : [ "Glide[13]", "Glide", 0 ],
+			"obj-176::obj-46" : [ "Pit Env[9]", "Pit Env", 0 ],
+			"obj-152::obj-34" : [ "Type[3]", "Type", 0 ],
+			"obj-160::obj-40" : [ "Vibrato[5]", "Vib", 0 ],
+			"obj-176::obj-25" : [ "Vol Env[9]", "Vol Env", 0 ],
+			"obj-152::obj-48" : [ "P.Shape[3]", "P.Shape", 0 ],
+			"obj-156::obj-25" : [ "Vol Env[4]", "Vol Env", 0 ],
+			"obj-176::obj-38" : [ "Vib Speed[9]", "Vib Rate", 0 ],
+			"obj-152::obj-25" : [ "Vol Env[3]", "Vol Env", 0 ],
+			"obj-156::obj-42" : [ "Glide[4]", "Glide", 0 ],
+			"obj-172::obj-42" : [ "Glide[8]", "Glide", 0 ],
+			"obj-148::obj-38" : [ "Vib Speed[2]", "Vib Rate", 0 ],
+			"obj-156::obj-34" : [ "Type[4]", "Type", 0 ],
+			"obj-172::obj-34" : [ "Type[8]", "Type", 0 ],
+			"obj-63::obj-23" : [ "S.Tune", "S.Tune", 0 ],
+			"obj-148::obj-23" : [ "S.Tune[2]", "S.Tune", 0 ],
+			"obj-200::obj-40" : [ "Vibrato[15]", "Vib", 0 ],
+			"obj-188::obj-23" : [ "S.Tune[12]", "S.Tune", 0 ],
+			"obj-63::obj-9" : [ "PWM", "PWM", 0 ],
+			"obj-148::obj-20" : [ "Transpose[2]", "Trans", 0 ],
+			"obj-188::obj-25" : [ "Vol Env[12]", "Vol Env", 0 ],
+			"obj-168::obj-23" : [ "S.Tune[7]", "S.Tune", 0 ],
+			"obj-184::obj-40" : [ "Vibrato[11]", "Vib", 0 ],
+			"obj-168::obj-46" : [ "Pit Env[7]", "Pit Env", 0 ],
+			"obj-184::obj-46" : [ "Pit Env[11]", "Pit Env", 0 ],
+			"obj-164::obj-42" : [ "Glide[6]", "Glide", 0 ],
+			"obj-196::obj-38" : [ "Vib Speed[14]", "Vib Rate", 0 ],
+			"obj-164::obj-40" : [ "Vibrato[6]", "Vib", 0 ],
+			"obj-192::obj-20" : [ "Transpose[13]", "Trans", 0 ],
+			"obj-180::obj-38" : [ "Vib Speed[10]", "Vib Rate", 0 ],
+			"obj-144::obj-40" : [ "Vibrato[1]", "Vib", 0 ],
+			"obj-164::obj-9" : [ "PWM[6]", "PWM", 0 ],
+			"obj-192::obj-46" : [ "Pit Env[13]", "Pit Env", 0 ],
+			"obj-180::obj-20" : [ "Transpose[10]", "Trans", 0 ],
+			"obj-144::obj-46" : [ "Pit Env[1]", "Pit Env", 0 ],
+			"obj-160::obj-34" : [ "Type[5]", "Type", 0 ],
+			"obj-188::obj-42" : [ "Glide[12]", "Glide", 0 ],
+			"obj-176::obj-48" : [ "P.Shape[9]", "P.Shape", 0 ],
+			"obj-63::obj-40" : [ "Vibrato", "Vib", 0 ],
+			"obj-152::obj-23" : [ "S.Tune[3]", "S.Tune", 0 ],
+			"obj-160::obj-25" : [ "Vol Env[5]", "Vol Env", 0 ],
+			"obj-176::obj-20" : [ "Transpose[9]", "Trans", 0 ],
+			"obj-63::obj-42" : [ "Glide", "Glide", 0 ],
+			"obj-152::obj-40" : [ "Vibrato[3]", "Vib", 0 ],
+			"obj-156::obj-9" : [ "PWM[4]", "PWM", 0 ],
+			"obj-176::obj-42" : [ "Glide[9]", "Glide", 0 ],
+			"obj-63::obj-25" : [ "Vol Env", "Vol Env", 0 ],
+			"obj-148::obj-25" : [ "Vol Env[2]", "Vol Env", 0 ],
+			"obj-156::obj-23" : [ "S.Tune[4]", "S.Tune", 0 ],
+			"obj-172::obj-38" : [ "Vib Speed[8]", "Vib Rate", 0 ],
+			"obj-148::obj-42" : [ "Glide[2]", "Glide", 0 ],
+			"obj-200::obj-20" : [ "Transpose[15]", "Trans", 0 ],
+			"obj-172::obj-36" : [ "Noise Delay[8]", "Noi Dly", 0 ],
+			"obj-148::obj-48" : [ "P.Shape[2]", "P.Shape", 0 ],
+			"obj-200::obj-48" : [ "P.Shape[15]", "P.Shape", 0 ],
+			"obj-188::obj-40" : [ "Vibrato[12]", "Vib", 0 ],
+			"obj-168::obj-38" : [ "Vib Speed[7]", "Vib Rate", 0 ],
+			"obj-200::obj-34" : [ "Type[15]", "Type", 0 ],
 			"obj-188::obj-38" : [ "Vib Speed[12]", "Vib Rate", 0 ],
-			"obj-148::obj-9" : [ "PWM[2]", "PWM", 0 ],
+			"obj-168::obj-42" : [ "Glide[7]", "Glide", 0 ],
+			"obj-196::obj-20" : [ "Transpose[14]", "Trans", 0 ],
+			"obj-184::obj-25" : [ "Vol Env[11]", "Vol Env", 0 ],
+			"obj-168::obj-25" : [ "Vol Env[7]", "Vol Env", 0 ],
+			"obj-196::obj-42" : [ "Glide[14]", "Glide", 0 ],
+			"obj-184::obj-36" : [ "Noise Delay[11]", "Noi Dly", 0 ],
+			"obj-164::obj-38" : [ "Vib Speed[6]", "Vib Rate", 0 ],
+			"obj-196::obj-40" : [ "Vibrato[14]", "Vib", 0 ],
+			"obj-180::obj-25" : [ "Vol Env[10]", "Vol Env", 0 ],
+			"obj-144::obj-25" : [ "Vol Env[1]", "Vol Env", 0 ],
+			"obj-164::obj-46" : [ "Pit Env[6]", "Pit Env", 0 ],
+			"obj-192::obj-38" : [ "Vib Speed[13]", "Vib Rate", 0 ],
+			"obj-180::obj-48" : [ "P.Shape[10]", "P.Shape", 0 ],
+			"obj-144::obj-9" : [ "PWM[1]", "PWM", 0 ],
+			"obj-164::obj-48" : [ "P.Shape[6]", "P.Shape", 0 ],
+			"obj-192::obj-48" : [ "P.Shape[13]", "P.Shape", 0 ],
+			"obj-180::obj-9" : [ "PWM[10]", "PWM", 0 ],
+			"obj-144::obj-42" : [ "Glide[1]", "Glide", 0 ],
+			"obj-160::obj-9" : [ "PWM[5]", "PWM", 0 ],
+			"obj-188::obj-46" : [ "Pit Env[12]", "Pit Env", 0 ],
+			"obj-152::obj-9" : [ "PWM[3]", "PWM", 0 ],
+			"obj-160::obj-23" : [ "S.Tune[5]", "S.Tune", 0 ],
+			"obj-152::obj-38" : [ "Vib Speed[3]", "Vib Rate", 0 ],
+			"obj-156::obj-46" : [ "Pit Env[4]", "Pit Env", 0 ],
+			"obj-176::obj-40" : [ "Vibrato[9]", "Vib", 0 ],
+			"obj-148::obj-34" : [ "Type[2]", "Type", 0 ],
+			"obj-156::obj-40" : [ "Vibrato[4]", "Vib", 0 ],
+			"obj-172::obj-9" : [ "PWM[8]", "PWM", 0 ],
+			"obj-148::obj-46" : [ "Pit Env[2]", "Pit Env", 0 ],
+			"obj-200::obj-36" : [ "Noise Delay[15]", "Noi Dly", 0 ],
+			"obj-172::obj-40" : [ "Vibrato[8]", "Vib", 0 ],
+			"obj-148::obj-36" : [ "Noise Delay[2]", "Noi Dly", 0 ],
+			"obj-200::obj-9" : [ "PWM[15]", "PWM", 0 ],
+			"obj-188::obj-9" : [ "PWM[12]", "PWM", 0 ],
+			"obj-168::obj-36" : [ "Noise Delay[7]", "Noi Dly", 0 ],
+			"obj-200::obj-38" : [ "Vib Speed[15]", "Vib Rate", 0 ],
+			"obj-188::obj-36" : [ "Noise Delay[12]", "Noi Dly", 0 ],
+			"obj-168::obj-9" : [ "PWM[7]", "PWM", 0 ],
+			"obj-196::obj-34" : [ "Type[14]", "Type", 0 ],
 			"obj-184::obj-34" : [ "Type[11]", "Type", 0 ],
 			"obj-63::obj-48" : [ "P.Shape", "P.Shape", 0 ],
-			"obj-148::obj-23" : [ "S.Tune[2]", "S.Tune", 0 ],
+			"obj-164::obj-25" : [ "Vol Env[6]", "Vol Env", 0 ],
+			"obj-196::obj-25" : [ "Vol Env[14]", "Vol Env", 0 ],
 			"obj-184::obj-42" : [ "Glide[11]", "Glide", 0 ],
 			"obj-63::obj-46" : [ "Pit Env", "Pit Env", 0 ],
-			"obj-168::obj-42" : [ "Glide[7]", "Glide", 0 ],
-			"obj-184::obj-46" : [ "Pit Env[11]", "Pit Env", 0 ],
-			"obj-63::obj-36" : [ "Noise Delay", "Noi Dly", 0 ],
-			"obj-168::obj-38" : [ "Vib Speed[7]", "Vib Rate", 0 ],
-			"obj-200::obj-48" : [ "P.Shape[15]", "P.Shape", 0 ],
-			"obj-180::obj-20" : [ "Transpose[10]", "Trans", 0 ],
-			"obj-168::obj-36" : [ "Noise Delay[7]", "Noi Dly", 0 ],
-			"obj-200::obj-46" : [ "Pit Env[15]", "Pit Env", 0 ],
-			"obj-180::obj-42" : [ "Glide[10]", "Glide", 0 ],
-			"obj-164::obj-20" : [ "Transpose[6]", "Trans", 0 ],
-			"obj-200::obj-9" : [ "PWM[15]", "PWM", 0 ],
-			"obj-176::obj-42" : [ "Glide[9]", "Glide", 0 ],
-			"obj-164::obj-9" : [ "PWM[6]", "PWM", 0 ],
-			"obj-196::obj-23" : [ "S.Tune[14]", "S.Tune", 0 ],
-			"obj-176::obj-20" : [ "Transpose[9]", "Trans", 0 ],
-			"obj-160::obj-20" : [ "Transpose[5]", "Trans", 0 ],
-			"obj-196::obj-34" : [ "Type[14]", "Type", 0 ],
-			"obj-172::obj-48" : [ "P.Shape[8]", "P.Shape", 0 ],
-			"obj-144::obj-20" : [ "Transpose[1]", "Trans", 0 ],
-			"obj-160::obj-25" : [ "Vol Env[5]", "Vol Env", 0 ],
-			"obj-192::obj-46" : [ "Pit Env[13]", "Pit Env", 0 ],
-			"obj-172::obj-23" : [ "S.Tune[8]", "S.Tune", 0 ],
-			"obj-144::obj-42" : [ "Glide[1]", "Glide", 0 ],
-			"obj-156::obj-25" : [ "Vol Env[4]", "Vol Env", 0 ],
-			"obj-192::obj-25" : [ "Vol Env[13]", "Vol Env", 0 ],
-			"obj-152::obj-42" : [ "Glide[3]", "Glide", 0 ],
-			"obj-156::obj-23" : [ "S.Tune[4]", "S.Tune", 0 ],
-			"obj-188::obj-48" : [ "P.Shape[12]", "P.Shape", 0 ],
-			"obj-152::obj-36" : [ "Noise Delay[3]", "Noi Dly", 0 ],
-			"obj-188::obj-46" : [ "Pit Env[12]", "Pit Env", 0 ],
-			"obj-148::obj-36" : [ "Noise Delay[2]", "Noi Dly", 0 ],
-			"obj-184::obj-38" : [ "Vib Speed[11]", "Vib Rate", 0 ],
-			"obj-148::obj-38" : [ "Vib Speed[2]", "Vib Rate", 0 ],
-			"obj-184::obj-9" : [ "PWM[11]", "PWM", 0 ],
-			"obj-168::obj-25" : [ "Vol Env[7]", "Vol Env", 0 ],
-			"obj-180::obj-23" : [ "S.Tune[10]", "S.Tune", 0 ],
-			"obj-168::obj-34" : [ "Type[7]", "Type", 0 ],
-			"obj-200::obj-36" : [ "Noise Delay[15]", "Noi Dly", 0 ],
-			"obj-180::obj-9" : [ "PWM[10]", "PWM", 0 ],
-			"obj-63::obj-38" : [ "Vib Speed", "Vib Rate", 0 ],
-			"obj-164::obj-38" : [ "Vib Speed[6]", "Vib Rate", 0 ],
-			"obj-200::obj-42" : [ "Glide[15]", "Glide", 0 ],
-			"obj-180::obj-25" : [ "Vol Env[10]", "Vol Env", 0 ],
-			"obj-164::obj-40" : [ "Vibrato[6]", "Vib", 0 ],
-			"obj-196::obj-46" : [ "Pit Env[14]", "Pit Env", 0 ],
-			"obj-176::obj-34" : [ "Type[9]", "Type", 0 ],
-			"obj-164::obj-46" : [ "Pit Env[6]", "Pit Env", 0 ],
-			"obj-196::obj-36" : [ "Noise Delay[14]", "Noi Dly", 0 ],
-			"obj-176::obj-48" : [ "P.Shape[9]", "P.Shape", 0 ],
-			"obj-144::obj-38" : [ "Vib Speed[1]", "Vib Rate", 0 ],
-			"obj-160::obj-9" : [ "PWM[5]", "PWM", 0 ],
+			"obj-164::obj-34" : [ "Type[6]", "Type", 0 ],
 			"obj-196::obj-9" : [ "PWM[14]", "PWM", 0 ],
-			"obj-172::obj-38" : [ "Vib Speed[8]", "Vib Rate", 0 ],
+			"obj-180::obj-42" : [ "Glide[10]", "Glide", 0 ],
 			"obj-144::obj-48" : [ "P.Shape[1]", "P.Shape", 0 ],
-			"obj-160::obj-36" : [ "Noise Delay[5]", "Noi Dly", 0 ],
+			"obj-164::obj-36" : [ "Noise Delay[6]", "Noi Dly", 0 ],
+			"obj-192::obj-36" : [ "Noise Delay[13]", "Noi Dly", 0 ],
+			"obj-180::obj-40" : [ "Vibrato[10]", "Vib", 0 ],
+			"obj-144::obj-36" : [ "Noise Delay[1]", "Noi Dly", 0 ],
 			"obj-192::obj-40" : [ "Vibrato[13]", "Vib", 0 ],
-			"obj-172::obj-20" : [ "Transpose[8]", "Trans", 0 ],
-			"obj-144::obj-9" : [ "PWM[1]", "PWM", 0 ],
-			"obj-156::obj-20" : [ "Transpose[4]", "Trans", 0 ],
-			"obj-192::obj-20" : [ "Transpose[13]", "Trans", 0 ],
-			"obj-152::obj-25" : [ "Vol Env[3]", "Vol Env", 0 ],
-			"obj-156::obj-9" : [ "PWM[4]", "PWM", 0 ],
-			"obj-188::obj-25" : [ "Vol Env[12]", "Vol Env", 0 ],
+			"obj-176::obj-36" : [ "Noise Delay[9]", "Noi Dly", 0 ],
 			"obj-152::obj-20" : [ "Transpose[3]", "Trans", 0 ],
-			"obj-188::obj-42" : [ "Glide[12]", "Glide", 0 ]
+			"obj-160::obj-46" : [ "Pit Env[5]", "Pit Env", 0 ],
+			"obj-188::obj-34" : [ "Type[12]", "Type", 0 ],
+			"obj-63::obj-20" : [ "Transpose", "Trans", 0 ],
+			"obj-152::obj-36" : [ "Noise Delay[3]", "Noi Dly", 0 ],
+			"obj-160::obj-42" : [ "Glide[5]", "Glide", 0 ],
+			"obj-156::obj-38" : [ "Vib Speed[4]", "Vib Rate", 0 ],
+			"obj-172::obj-23" : [ "S.Tune[8]", "S.Tune", 0 ],
+			"obj-156::obj-20" : [ "Transpose[4]", "Trans", 0 ],
+			"obj-172::obj-46" : [ "Pit Env[8]", "Pit Env", 0 ],
+			"obj-200::obj-42" : [ "Glide[15]", "Glide", 0 ],
+			"obj-172::obj-25" : [ "Vol Env[8]", "Vol Env", 0 ],
+			"obj-148::obj-9" : [ "PWM[2]", "PWM", 0 ],
+			"obj-200::obj-46" : [ "Pit Env[15]", "Pit Env", 0 ],
+			"obj-188::obj-48" : [ "P.Shape[12]", "P.Shape", 0 ],
+			"obj-63::obj-34" : [ "Type", "Type", 0 ],
+			"obj-168::obj-34" : [ "Type[7]", "Type", 0 ],
+			"obj-200::obj-25" : [ "Vol Env[15]", "Vol Env", 0 ],
+			"obj-184::obj-38" : [ "Vib Speed[11]", "Vib Rate", 0 ],
+			"obj-168::obj-40" : [ "Vibrato[7]", "Vib", 0 ],
+			"obj-196::obj-48" : [ "P.Shape[14]", "P.Shape", 0 ],
+			"obj-184::obj-48" : [ "P.Shape[11]", "P.Shape", 0 ],
+			"obj-196::obj-46" : [ "Pit Env[14]", "Pit Env", 0 ],
+			"obj-184::obj-23" : [ "S.Tune[11]", "S.Tune", 0 ],
+			"obj-164::obj-20" : [ "Transpose[6]", "Trans", 0 ],
+			"obj-196::obj-36" : [ "Noise Delay[14]", "Noi Dly", 0 ],
+			"obj-180::obj-34" : [ "Type[10]", "Type", 0 ],
+			"obj-63::obj-36" : [ "Noise Delay", "Noi Dly", 0 ],
+			"obj-144::obj-23" : [ "S.Tune[1]", "S.Tune", 0 ],
+			"obj-192::obj-34" : [ "Type[13]", "Type", 0 ],
+			"obj-180::obj-36" : [ "Noise Delay[10]", "Noi Dly", 0 ],
+			"obj-144::obj-38" : [ "Vib Speed[1]", "Vib Rate", 0 ],
+			"obj-160::obj-48" : [ "P.Shape[5]", "P.Shape", 0 ],
+			"obj-192::obj-25" : [ "Vol Env[13]", "Vol Env", 0 ],
+			"obj-176::obj-34" : [ "Type[9]", "Type", 0 ],
+			"obj-152::obj-46" : [ "Pit Env[3]", "Pit Env", 0 ],
+			"obj-160::obj-38" : [ "Vib Speed[5]", "Vib Rate", 0 ],
+			"obj-176::obj-23" : [ "S.Tune[9]", "S.Tune", 0 ],
+			"obj-152::obj-42" : [ "Glide[3]", "Glide", 0 ],
+			"obj-160::obj-36" : [ "Noise Delay[5]", "Noi Dly", 0 ],
+			"obj-176::obj-9" : [ "PWM[9]", "PWM", 0 ],
+			"obj-156::obj-36" : [ "Noise Delay[4]", "Noi Dly", 0 ],
+			"obj-172::obj-20" : [ "Transpose[8]", "Trans", 0 ],
+			"obj-156::obj-48" : [ "P.Shape[4]", "P.Shape", 0 ],
+			"obj-172::obj-48" : [ "P.Shape[8]", "P.Shape", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
