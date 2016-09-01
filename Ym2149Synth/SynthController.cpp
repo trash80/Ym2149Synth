@@ -31,15 +31,15 @@ void SynthControllerClass::begin()
     Ym.setPortIO(1,1);
 
     for(int i=0;i<3;i++) {
-        Ym.setPin(8,1);
+        Ym.setPin(0,1);
         digitalWrite(13,HIGH);
         delay(60);
-        Ym.setPin(8,0);
+        Ym.setPin(0,0);
         digitalWrite(13,LOW);
         delay(60);
     }
 
-    Ym.setPin(8,1);
+    Ym.setPin(0,1);
     Ym.mute();
 
     Patch[0].init(); // Init memory / eeprom once.
