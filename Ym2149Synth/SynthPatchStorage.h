@@ -20,6 +20,18 @@
  *
  */
 
+/*
+ * Check for Teensy LC
+ * 
+ * LC has only 128 bytes of flash-emulated EEPROM
+ * so we lower the patch amount to 11 instead of 16
+ */
+#if defined (__MKL26Z64__)
+#define MAX_PATCHES 11
+#else
+#define MAX_PATCHES 16
+#endif
+
 #ifndef SYNTHPATCHSTORAGE_h
 #define SYNTHPATCHSTORAGE_h
 
@@ -44,12 +56,12 @@ class SynthPatchStorageClass {
     void setValue(uint8_t address,uint8_t value);
     void writeValue(uint8_t address,uint8_t value);
 
-    static const uint8_t numberPatches = 16;
-    static const uint8_t patchSize = 16;
+    static const uint8_t numberPatches = MAX_PATCHES;
+    static const uint8_t patchSize = 11;
   private:
-    static uint8_t bank[16][16];
+    static uint8_t bank[11][11];
     uint8_t selectedPatch;
-    uint8_t patchTemp[16];
+    uint8_t patchTemp[11];
 };
 
 typedef SynthPatchStorageClass SynthPatchStorage;
