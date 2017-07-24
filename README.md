@@ -28,3 +28,4 @@ YM2149F Teensy Synthesizer
 * CC11- Transpose: 64 center.
 * CC120 - Load Preset (0-15)
 * CC121 - Save Preset (0-15)
+* CC122 - Dump Patches
