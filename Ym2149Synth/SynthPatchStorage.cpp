@@ -24,7 +24,7 @@
 
 //@TODO document this class
 
-uint8_t SynthPatchStorageClass::bank[11][11] = {
+uint8_t SynthPatchStorageClass::bank[MAX_PATCHES][11] = {
     { 1, 0, 0, 0, 0, 64, 0, 0, 0, 0, 64 },
     { 0, 0, 1, 0, 0, 64, 0, 0, 0, 0, 0 },
     { 0, 0, 2, 0, 0, 64, 0, 0, 0, 0, 0 },

@@ -22,7 +22,7 @@
 
 /*
  * Check for Teensy LC
- * 
+ *
  * LC has only 128 bytes of flash-emulated EEPROM
  * so we lower the patch amount to 11 instead of 16
  */
@@ -59,7 +59,7 @@ class SynthPatchStorageClass {
     static const uint8_t numberPatches = MAX_PATCHES;
     static const uint8_t patchSize = 11;
   private:
-    static uint8_t bank[11][11];
+    static uint8_t bank[MAX_PATCHES][11];
     uint8_t selectedPatch;
     uint8_t patchTemp[11];
 };
