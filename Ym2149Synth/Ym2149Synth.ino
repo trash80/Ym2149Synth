@@ -21,8 +21,8 @@
  */
 
 /*
-Define BENCHMARK to run benchmarking (Look to method "benchmark" SynthController.cpp)
-*/
+ * Define BENCHMARK to run benchmarking (Look to method "benchmark" SynthController.cpp)
+ */
 //#define BENCHMARK 1
 
 #include "MidiDeviceUsb.h"
