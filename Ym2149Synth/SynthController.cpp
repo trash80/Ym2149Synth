@@ -178,10 +178,6 @@ void SynthControllerClass::onControlChange(MidiCallbackClass * midi)
                 for(uint8_t i=0;i!=Patch[synth].patchSize;i++) {
                     midi->sendControlChange(midi->getChannel(), i+1, buffer[i]);
                 }
-                /* Send 5 dummy bytes to pad CC data */
-                for(uint8_t i=11; i < 16; i++) {
-                    midi->sendControlChange(midi->getChannel(), i+1, i);
-                }
                 break;
         }
     }
